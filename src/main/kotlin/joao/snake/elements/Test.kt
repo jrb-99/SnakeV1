@@ -3,11 +3,11 @@ package joao.snake.elements
 import pt.isel.canvas.*
 
 // Properties
-const val WIDTH = 20
-const val HEIGHT = 16
-const val CELL_SIZE = 32
+//const val WIDTH = 20
+//const val HEIGHT = 16
+//const val CELL_SIZE = 32
 
-fun main() {
+/*fun main() {
 
     onStart {
         val canvas = Canvas(WIDTH * CELL_SIZE, HEIGHT * CELL_SIZE, BLACK)
@@ -48,4 +48,4 @@ fun draw(canvas: Canvas, pos: Position) {
         }
     }
     canvas.drawImage("snake|0,192,64,64", pos.x * CELL_SIZE, pos.y * CELL_SIZE, CELL_SIZE, CELL_SIZE)
-}
+}*/
