@@ -15,42 +15,60 @@ const val S_T_DOWN = "snake|256,192,64,64"
 const val S_T_LEFT = "snake|192,192,64,64"
 const val S_T_RIGHT = "snake|256,128,64,64"
 
-data class Snake(var pos: Position = Position(WIDTH / 2, HEIGHT / 2), var dir: Int = RIGHT) {
+data class Snake(val pos: Position = Position(WIDTH / 2, HEIGHT / 2), val dir: Int = RIGHT) {
 
-    fun moveUp(): Position {
-        this.dir = UP
-        println(this.dir)
-        if (pos.y < 0) {
-            return pos.resetYD()
-        }
-        return pos.up()
-    }
-
-    fun moveDown(): Position {
-        this.dir = DOWN
-        println(this.dir)
-        if(pos.y > HEIGHT - 1){
-            return pos.resetYU()
-        }
-        return pos.down()
-    }
-
-    fun moveLeft(): Position {
-        this.dir = LEFT
-        println(this.dir)
-        if(pos.x < 0){
-            return pos.resetXL()
-        }
-        return pos.left()
-    }
-
-    fun moveRight(): Position {
-        this.dir = RIGHT
-        println(this.dir)
-        if(pos.x > WIDTH - 1){
-            return pos.resetXR()
+    fun moveUp(): Snake {
+        if(this.dir != DOWN) {
+            println("x: ${pos.x}, y: ${pos.y}")
+            if (pos.y <= 0) {
+                return Snake(pos.resetYD(), UP)
             }
-        return pos.right()
+            return Snake(pos.up(), UP)
+        }
+        return this
+    }
+
+    fun moveDown(): Snake {
+        if(this.dir != UP) {
+            println("x: ${pos.x}, y: ${pos.y}")
+            if (pos.y >= HEIGHT - 1) {
+                return Snake(pos.resetYU(), DOWN)
+            }
+            return Snake(pos.down(), DOWN)
+        }
+        return this
+    }
+
+    fun moveLeft(): Snake {
+        if(dir != RIGHT) {
+            println("x: ${pos.x}, y: ${pos.y}")
+            if (pos.x <= 0) {
+                return Snake(pos.resetXL(), LEFT)
+            }
+            return Snake(pos.left(), LEFT)
+        }
+        return this
+    }
+
+    fun moveRight(): Snake {
+        if(dir != LEFT) {
+            println("x: ${pos.x}, y: ${pos.y}")
+            if (pos.x >= WIDTH - 1) {
+                return Snake(pos.resetXR(), RIGHT)
+            }
+            return Snake(pos.right(), RIGHT)
+        }
+        return this
+    }
+
+    fun nextPos(): Position {
+        return when (dir) {
+            UP -> pos.up()
+            DOWN -> pos.down()
+            LEFT -> pos.left()
+            RIGHT -> pos.right()
+            else -> pos.right()
+        }
     }
 
     fun snakeImgH(d: Int): String {

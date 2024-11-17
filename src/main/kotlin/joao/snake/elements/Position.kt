@@ -20,7 +20,7 @@ data class Position(val x: Int, val y: Int){
     }
 
     fun resetXL(): Position{
-        return Position(WIDTH-1, y)
+        return Position(WIDTH - 1, y)//-1
     }
 
     fun resetXR(): Position{
@@ -32,7 +32,7 @@ data class Position(val x: Int, val y: Int){
     }
 
     fun resetYD(): Position{
-        return  Position(x, HEIGHT-1)
+        return  Position(x, HEIGHT -1)//-1
     }
 
 }
