@@ -4,9 +4,7 @@ import pt.isel.canvas.*
 
     fun main() {
 
-        val iniSnk = Snake()
-        val iniList = mutableListOf<Position>()
-        var iniGame = Game(iniSnk, iniList)
+        var iniGame = Game()
         val canvas = Canvas(WIDTH * CELL_SIZE, HEIGHT * CELL_SIZE, BLACK)
 
         onStart {
@@ -43,7 +41,7 @@ import pt.isel.canvas.*
     fun drawGame(canvas: Canvas, game: Game) {
 
         canvas.erase()
-        drawGrid(canvas, WIDTH, HEIGHT, CELL_SIZE)
+        //drawGrid(canvas, WIDTH, HEIGHT, CELL_SIZE) used for development purposes
         drawSnake(canvas, game.snake)
         drawWall(canvas, game.wall)
 

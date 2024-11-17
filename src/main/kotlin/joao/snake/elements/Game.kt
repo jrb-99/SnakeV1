@@ -8,7 +8,7 @@ const val REFRESH_RATE = 250
 const val WALL_REFRESH_RATE = 5000
 
 //Represents the game status
-data class Game(val snake: Snake, val wall: List<Position>) {
+data class Game(val snake: Snake = Snake(Position(WIDTH / 2, HEIGHT / 2), RIGHT), val wall: List<Position> = mutableListOf<Position>()) {
 
     //Returns the next game status, checking if the snake has hit a wall
     fun advance(): Game {
@@ -59,13 +59,8 @@ data class Game(val snake: Snake, val wall: List<Position>) {
     fun genWall(list: List<Position>): List<Position> {
 
         var newList = list
-
-            println("Wall")
-
-            val new_w = Position((0..WIDTH).random(), (0..HEIGHT).random())
-
-            newList += new_w
-            println("${new_w}, ${newList.size}")
+        val new_w = Position((0..WIDTH).random(), (0..HEIGHT).random())
+        newList += new_w
 
         return newList
 

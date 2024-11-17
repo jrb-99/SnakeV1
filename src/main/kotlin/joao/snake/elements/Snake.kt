@@ -22,7 +22,6 @@ data class Snake(val pos: Position = Position(WIDTH / 2, HEIGHT / 2), val dir: I
     //Move the snake up
     fun moveUp(): Snake {
         if (this.dir != DOWN) {
-            println("x: ${pos.x}, y: ${pos.y}")
             if (upBorder()) {
                 return Snake(pos.resetYD(), UP)
             }
@@ -34,7 +33,6 @@ data class Snake(val pos: Position = Position(WIDTH / 2, HEIGHT / 2), val dir: I
     //Move the snake down
     fun moveDown(): Snake {
         if (this.dir != UP) {
-            println("x: ${pos.x}, y: ${pos.y}")
             if (downBorder()) {
                 return Snake(pos.resetYU(), DOWN)
             }
@@ -46,7 +44,6 @@ data class Snake(val pos: Position = Position(WIDTH / 2, HEIGHT / 2), val dir: I
     //Move the snake left
     fun moveLeft(): Snake {
         if (dir != RIGHT) {
-            println("x: ${pos.x}, y: ${pos.y}")
             if (leftBorder()) {
                 return Snake(pos.resetXL(), LEFT)
             }
@@ -58,7 +55,6 @@ data class Snake(val pos: Position = Position(WIDTH / 2, HEIGHT / 2), val dir: I
     //Move the snake right
     fun moveRight(): Snake {
         if (dir != LEFT) {
-            println("x: ${pos.x}, y: ${pos.y}")
             if (rightBorder()) {
                 return Snake(pos.resetXR(), RIGHT)
             }
